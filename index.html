@@ -21,11 +21,15 @@
     <body>
         <!-- NAVBAR -->
         <header>
-            <a href="section profile">
+            <a href="#section-profile">
                 <h3 class="logo">FHZYA</h3>
             </a>
 
-            <nav>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="nav-menu">
                 <ul>
                     <li>
                         <a href="#" class="button background-brown">About Me</a>
@@ -308,6 +312,32 @@
             </div>
         </footer>
 
-        <script src="images/script.js"></script>
+        <script src="script.js"></script>
+        <script>
+            function toggleMobileMenu() {
+                const navMenu = document.getElementById("nav-menu");
+                const menuBtn = document.querySelector(".mobile-menu-btn i");
+
+                navMenu.classList.toggle("mobile-menu-active");
+
+                if (navMenu.classList.contains("mobile-menu-active")) {
+                    menuBtn.className = "fas fa-times";
+                } else {
+                    menuBtn.className = "fas fa-bars";
+                }
+            }
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll("nav a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    const navMenu = document.getElementById("nav-menu");
+                    const menuBtn =
+                        document.querySelector(".mobile-menu-btn i");
+
+                    navMenu.classList.remove("mobile-menu-active");
+                    menuBtn.className = "fas fa-bars";
+                });
+            });
+        </script>
     </body>
 </html>
